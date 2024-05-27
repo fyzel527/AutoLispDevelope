@@ -14,6 +14,12 @@
        (mapcar '(lambda (a b) (/ (+ a b) 2.0)) min max))) ; 矩形、多段线等
     (t nil)))
 
+(defun print-entity-info (entity-type center)
+  (princ (strcat "\nEntity Type: " entity-type
+                 ", Center X: " (vl-princ-to-string (car center))
+                 ", Center Y: " (vl-princ-to-string (cadr center))
+                 ", Center Z: " (vl-princ-to-string (caddr center)))))
+
 (defun write-to-csv (filepath data)
   (setq file (open filepath "w"))
   (write-line "Entity Type, Center X, Center Y, Center Z" file) ; 写入CSV头
@@ -42,7 +48,9 @@
         (setq obj (vlax-ename->vla-object ent)) ; 转换为 COM 对象
         (setq center (get-entity-center obj)) ; 获取中心点
         (if center
-          (setq all-data (cons (list (vlax-get obj 'ObjectName) (car center) (cadr center) (caddr center)) all-data)) ; 存储数据
+          (progn
+            (print-entity-info (vlax-get obj 'ObjectName) center) ; 打印位置信息
+            (setq all-data (cons (list (vlax-get obj 'ObjectName) (car center) (cadr center) (caddr center)) all-data))) ; 存储数据
           (progn
             (princ (strcat "\nFailed to get center for object: " (vl-princ-to-string ent) "\n"))
             (setq all-data (cons (list (vlax-get obj 'ObjectName) 0.0 0.0 0.0) all-data)))) ; 处理无中心点的情况
