@@ -1,0 +1,16 @@
+;;; VLisp project file [V2.0] NewProject saved to:[c:\Code\AUtoLISP] at:[2024/5/26]
+(VLISP-PROJECT-LIST 
+  :NAME
+  NewProject
+  :OWN-LIST
+  ("lsp" "打印到excel")
+  :FAS-DIRECTORY
+  nil
+  :TMP-DIRECTORY
+  nil
+  :PROJECT-KEYS
+  (:BUILD (:standard))
+  :CONTEXT-ID
+  :AUTOLISP
+)
+;;; EOF

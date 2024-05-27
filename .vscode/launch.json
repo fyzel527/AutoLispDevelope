@@ -1,0 +1,23 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "type": "launchlisp",
+            "request": "launch",
+            "name": "Autolisp Debug: Launch",
+            "attributes": {
+                "path": "D:/app/Autodesk/Cad2024/AutoCAD 2024/acad.exe",
+                "params": "C:/Code/AUtoLISP/lsp.lsp"
+            }
+        },
+        {
+            "type": "attachlisp",
+            "request": "attach",
+            "name": "Autolisp Debug: Attach",
+            "attributes": {
+                "process": "acad"
+            }
+        }
+    ]
+}
