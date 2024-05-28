@@ -9,9 +9,9 @@
        (setq minp (vlax-make-safearray vlax-vbDouble '(0 . 2)))
        (setq maxp (vlax-make-safearray vlax-vbDouble '(0 . 2)))
        (vl-catch-all-apply 'vlax-invoke (list obj 'GetBoundingBox minp maxp))
-       (setq min (vlax-safearray->list minp))
-       (setq max (vlax-safearray->list maxp))
-       (mapcar '(lambda (a b) (/ (+ a b) 2.0)) min max))) ; 矩形、多段线等
+       (setq min-coords (vlax-safearray->list minp))
+       (setq max-coords (vlax-safearray->list maxp))
+       (mapcar '(lambda (a b) (/ (+ a b) 2.0)) min-coords max-coords))) ; 矩形、多段线等
     (t nil)))
 
 (defun print-entity-info (entity-type center)
